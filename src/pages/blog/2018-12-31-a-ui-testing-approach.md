@@ -36,7 +36,11 @@ Once the state is updated, we then update our UI with the new state. This can be
 
 ### What this looks like
 
-At it's core there are three packages that makeup the application. A UI update module, that is responsible for taking the state and updating the UI based on the state. Generally there needs to be a DOM element to bind the UI too. The signature of this function should look something like `DOMElement -> State -> void` The function would not return anything
+At it's core there are three packages that makeup the application, with other packages and modules having important roles. A UI update module, that is responsible for taking the state and updating the UI based on the state. Generally there needs to be a DOM element to bind the UI too. The signature of this function should look something like `DOMElement -> State -> void` The function would not return anything but the side-effect would be an updated UI.
+
+The next module would be the for the pipelines. This is where the core of the work happens and as such this module has the dependencies. Generally I would say two dependencies are required. First the update UI function and the second a library for the remote calls. The advantage of having these 2 dependencies is the ability to mock them out and leaving you with more deterministic tests.
+
+The final core package is the event listener binder. 
 
 ### Testing the events
 
