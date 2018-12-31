@@ -46,6 +46,24 @@ The final core package is the event listener binder. This package is for managin
 
 For tests like this to work you require some way of rendering DOM elements. My general go to is Jest with JSDOM, but tools for doing this are numerous.
 
+
+### Testing the UI
+
+The purpose of the UI tests is to make sure that when the UI is updated with a state the correct DOM is produced. The tests for the UI package consist of rendering the UI and seeing if the DOM contains the expected elements. The setup would be:
+
+graph TD
+State[Build state] --> Render
+Render[Render UI] --> Find
+Find[Find DOM node] 
+
+then the expectation would be:
+
+```js
+expect(foundDOMNode).not.toBeUndefined();
+```
+
+If you make your UI driven entirely from the state, it makes this style of test very easy. With the UI frameworks that derive what changes to the UI that need to be made based on the state this helps create a very pure version of your UI.
+
 ### Testing the events
 
 The purpose of the event listeners is to call the correct function when an event is dispatched. This is what will be testing: The test is setup by: 
@@ -57,10 +75,21 @@ Attach[Attach event listeners] --> Find
 Find[Find DOM node] --> Trigger
 Trigger[Trigger Event]
 
+Out expectation for this test is that the correct pipeline function will be triggered and we can use our mocked version of the pipeline package to test against that.
 
+```js
+expect(mockPipeline).toBeCalled();
+```
 
-### The second test
+We can expand this test to make sure the mock pipeline function is called with the correct values, that the events are being parsed properly. That bubbling is occurring as expected. With these examples the foundation of the test remains the same.
 
-### The final test
+### Testing the pipelines
+
+The purpose of the pipeline is to trigger UI changes with the latest version of the state. 
+
+graph TD
+State[Build state] --> Call
+Call[Call pipeline function] --> Log
+Log[Log state passed to UI function]
 
 ### Testing tools
