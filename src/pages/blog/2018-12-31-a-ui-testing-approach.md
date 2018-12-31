@@ -106,5 +106,8 @@ const firstCallToUi = mockUI.mock.called[0][0]
 expect(firstCallToUi.value).toBe(expectedValue);
 ```
 
-This way we are testing the state changes, the potential paths through the pipeline and multiple state updates in the pipeline.
+This way we are testing the state changes, the potential paths through the pipeline and multiple state updates in the pipeline. 
 
+### Wrap
+
+I like this application structure of pipelines, UI updates and delegated events. 
