@@ -38,7 +38,14 @@ Once the state is updated, we then update our UI with the new state. This can be
 
 At it's core there are three packages that makeup the application, with other packages and modules having important roles. A UI update module, that is responsible for taking the state and updating the UI based on the state. Generally there needs to be a DOM element to bind the UI too. The signature of this function should look something like `DOMElement -> State -> void` The function would not return anything but the side-effect would be an updated UI.
 
-The next module would be the for the pipelines. This is where the core of the work happens and as such this module has the dependencies. Generally I would say two dependencies are required. First the update UI function and the second a library for the remote calls. The advantage of having these 2 dependencies is the ability to mock them out and leaving you with more deterministic tests.
+The next module would be the for the pipelines. This is where the core of the work happens and as such this module has the dependencies. Generally I would say two dependencies are required. First the update UI function and the second a library for the remote calls. The advantage of having these 2 dependencies is the ability to mock them out and leaving you with more deterministic tests. A pipeline function could be responsible for multiple updates to the UI; imagine the fetchUser pipeline: 
+
+graph TD
+I[Idle] --> A
+A[Loading] --> B[Success]
+A --> F[Failure]
+
+As each state transitions
 
 The final core package is the event listener binder. This package is for managing the delegated event listeners. Binding a single event listener to a higher level DOM node and then calling the appropriate pipeline function when the event has been determined and cleaned. This package will have a dependency on the pipeline package.
 
@@ -85,11 +92,18 @@ We can expand this test to make sure the mock pipeline function is called with t
 
 ### Testing the pipelines
 
-The purpose of the pipeline is to trigger UI changes with the latest version of the state. 
+The purpose of the pipeline is to trigger UI changes with the latest version of the state. We call the pipeline function with mocked UI and fetch functions, this allows us to log the state changes that are sent to the UI function.
 
 graph TD
 State[Build state] --> Call
 Call[Call pipeline function] --> Log
 Log[Log state passed to UI function]
 
-### Testing tools
+We then expect:
+
+```js
+const firstCallToUi = mockUI.mock.called[0][0]
+expect(firstCallToUi.value).toBe(expectedValue);
+```
+
+This way we are testing the state changes, the potential paths through the pipeline and if a single pipeline is responsible for multiple UI updates.
