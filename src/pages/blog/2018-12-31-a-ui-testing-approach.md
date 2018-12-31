@@ -42,10 +42,10 @@ The next module would be the for the pipelines. This is where the core of the wo
 
 graph TD
 I[Idle] --> A
-A[Loading] --> B[Success]
+A[Fetch] --> B[Success]
 A --> F[Failure]
 
-As each state transitions
+The single pipeline function can transition through each state change of the fetch request and update the UI as required.
 
 The final core package is the event listener binder. This package is for managing the delegated event listeners. Binding a single event listener to a higher level DOM node and then calling the appropriate pipeline function when the event has been determined and cleaned. This package will have a dependency on the pipeline package.
 
@@ -106,4 +106,5 @@ const firstCallToUi = mockUI.mock.called[0][0]
 expect(firstCallToUi.value).toBe(expectedValue);
 ```
 
-This way we are testing the state changes, the potential paths through the pipeline and if a single pipeline is responsible for multiple UI updates.
+This way we are testing the state changes, the potential paths through the pipeline and multiple state updates in the pipeline.
+
