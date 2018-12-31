@@ -40,9 +40,24 @@ At it's core there are three packages that makeup the application, with other pa
 
 The next module would be the for the pipelines. This is where the core of the work happens and as such this module has the dependencies. Generally I would say two dependencies are required. First the update UI function and the second a library for the remote calls. The advantage of having these 2 dependencies is the ability to mock them out and leaving you with more deterministic tests.
 
-The final core package is the event listener binder. 
+The final core package is the event listener binder. This package is for managing the delegated event listeners. Binding a single event listener to a higher level DOM node and then calling the appropriate pipeline function when the event has been determined and cleaned. This package will have a dependency on the pipeline package.
+
+### What you need to test
+
+For tests like this to work you require some way of rendering DOM elements. My general go to is Jest with JSDOM, but tools for doing this are numerous.
 
 ### Testing the events
+
+The purpose of the event listeners is to call the correct function when an event is dispatched. This is what will be testing: The test is setup by: 
+
+graph TD
+State[Build state] --> Render
+Render[Render UI] --> Attach
+Attach[Attach event listeners] --> Find
+Find[Find DOM node] --> Trigger
+Trigger[Trigger Event]
+
+
 
 ### The second test
 
