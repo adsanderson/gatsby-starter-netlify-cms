@@ -6,7 +6,7 @@ description: 'or: How I wrote the same 3 tests over and over again'
 tags:
   - Develoment testing
 ---
-We are going to look at one way of structuring an app to help make your testing life easier. 
+We are going to look at one way of structuring an app to help make your testing life easier.
 
 ### The architectural building block
 
@@ -20,7 +20,7 @@ $el.addEventListener('a-custom-event', updatePipeline);
 or in a proposed pipeline style:
 
 ```js
-const updatePipeline = evt => 
+const updatePipeline = evt =>
   evt.detail.action
   |> updateState
   |> updateUi
@@ -28,7 +28,7 @@ const updatePipeline = evt =>
 $el.addEventListener('a-custom-event', updatePipeline);
 ```
 
-Lets break down what is happening above: we start with an event, that calls the `updatePipeline` function. The `updatePipeline` function starts by taking some data from the event and updating the state. 
+Lets break down what is happening above: we start with an event, that calls the `updatePipeline` function. The `updatePipeline` function starts by taking some data from the event and updating the state.
 
 This can follow a reducer pattern `state -> action -> state`. We have and initial state, we pass in our action and we get a new state at out the other side.
 
@@ -38,12 +38,14 @@ Once the state is updated, we then update our UI with the new state. This can be
 
 At it's core there are three packages that makeup the application, with other packages and modules having important roles. A UI update module, that is responsible for taking the state and updating the UI based on the state. Generally there needs to be a DOM element to bind the UI too. The signature of this function should look something like `DOMElement -> State -> void` The function would not return anything but the side-effect would be an updated UI.
 
-The next module would be the for the pipelines. This is where the core of the work happens and as such this module has the dependencies. Generally I would say two dependencies are required. First the update UI function and the second a library for the remote calls. The advantage of having these 2 dependencies is the ability to mock them out and leaving you with more deterministic tests. A pipeline function could be responsible for multiple updates to the UI; imagine the fetchUser pipeline: 
+The next module would be the for the pipelines. This is where the core of the work happens and as such this module has the dependencies. Generally I would say two dependencies are required. First the update UI function and the second a library for the remote calls. The advantage of having these 2 dependencies is the ability to mock them out and leaving you with more deterministic tests. A pipeline function could be responsible for multiple updates to the UI; imagine the fetchUser pipeline:
 
+```mermaid
 graph TD
 I[Idle] --> A
 A[Fetch] --> B[Success]
 A --> F[Failure]
+```
 
 The single pipeline function can transition through each state change of the fetch request and update the UI as required.
 
@@ -61,7 +63,7 @@ The purpose of the UI tests is to make sure that when the UI is updated with a s
 graph TD
 State[Build state] --> Render
 Render[Render UI] --> Find
-Find[Find DOM node] 
+Find[Find DOM node]
 
 then the expectation would be:
 
@@ -73,14 +75,16 @@ If you make your UI driven entirely from the state, it makes this style of test 
 
 ### Testing the events
 
-The purpose of the event listeners is to call the correct function when an event is dispatched. This is what will be testing: The test is setup by: 
+The purpose of the event listeners is to call the correct function when an event is dispatched. This is what will be testing: The test is setup by:
 
+```mermaid
 graph TD
 State[Build state] --> Render
 Render[Render UI] --> Attach
 Attach[Attach event listeners] --> Find
 Find[Find DOM node] --> Trigger
 Trigger[Trigger Event]
+```
 
 Out expectation for this test is that the correct pipeline function will be triggered and we can use our mocked version of the pipeline package to test against that.
 
@@ -94,10 +98,12 @@ We can expand this test to make sure the mock pipeline function is called with t
 
 The purpose of the pipeline is to trigger UI changes with the latest version of the state. We call the pipeline function with mocked UI and fetch functions, this allows us to log the state changes that are sent to the UI function.
 
+```mermaid
 graph TD
 State[Build state] --> Call
 Call[Call pipeline function] --> Log
 Log[Log state passed to UI function]
+```
 
 We then expect:
 
@@ -106,8 +112,8 @@ const firstCallToUi = mockUI.mock.called[0][0]
 expect(firstCallToUi.value).toBe(expectedValue);
 ```
 
-This way we are testing the state changes, the potential paths through the pipeline and multiple state updates in the pipeline. 
+This way we are testing the state changes, the potential paths through the pipeline and multiple state updates in the pipeline.
 
 ### Wrap
 
-I like this application structure of pipelines, UI updates and delegated events. 
+I like this application structure of pipelines, UI updates and delegated events.
