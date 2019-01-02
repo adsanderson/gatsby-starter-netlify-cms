@@ -24,7 +24,14 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: [],
+        plugins: [{
+          resolve: 'gatsby-remark-graph',
+          options: {
+            // this is the language in your code-block that triggers mermaid parsing
+            language: 'mermaid', // default
+            theme: 'default' // could also be dark, forest, or neutral
+          }
+        }],
       },
     },
     {
@@ -32,6 +39,9 @@ module.exports = {
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-feed`
     },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
