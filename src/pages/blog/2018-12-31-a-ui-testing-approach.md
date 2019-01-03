@@ -51,6 +51,15 @@ The single pipeline function can transition through each state change of the fet
 
 The final core package is the event listener binder. This package is for managing the delegated event listeners. Binding a single event listener to a higher level DOM node and then calling the appropriate pipeline function when the event has been determined and cleaned. This package will have a dependency on the pipeline package.
 
+The cycle is an `Event` triggers a `Pipeline` which updates the `UI`, which has events attached to it.
+
+```mermaid
+graph LR
+A[UI] --> B[Events]
+B --> C[Pipelines]
+C --> A
+```
+
 ### What you need to test
 
 For tests like this to work you require some way of rendering DOM elements. My general go to is Jest with JSDOM, but tools for doing this are numerous.
