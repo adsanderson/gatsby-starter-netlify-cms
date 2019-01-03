@@ -34,19 +34,19 @@ So that is where are tests should lead us: Do identical inputs give identical re
 
 Here is the first test to see if the checksums are consistent:
 
-{% codeblock Test B lang:Javascript %}
+```javascript
 var value = createChecksum([1, 2, 3]);
 var matchingValue = createChecksum([1, 2, 3]);
 expect(value).to.be.equal(matchingValue);
-{% endcodeblock %}
+```
 
 And the second test to see if different inputs give us different results:
 
-{% codeblock Test C lang:Javascript %}
+```javascript
 var value = createChecksum([1, 2, 3]);
 var differentValue = createChecksum([test, test, test]);
 expect(value).to.not.be.equal(differentValue);
-{% endcodeblock %}
+```
 
 ### Change the output, keep the behaviour
 
