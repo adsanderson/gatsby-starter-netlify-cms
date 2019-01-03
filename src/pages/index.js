@@ -10,7 +10,6 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <section>
             {posts
               .map(({ node: post }) => (
                 <div
@@ -34,7 +33,6 @@ export default class IndexPage extends React.Component {
                   </p>
                 </div>
               ))}
-        </section>
       </Layout>
     )
   }
@@ -56,7 +54,6 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 400)
           id
           fields {
             slug

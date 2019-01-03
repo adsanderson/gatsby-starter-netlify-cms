@@ -4,6 +4,10 @@ import Helmet from "react-helmet";
 import Navbar from "../components/Navbar";
 import "./all.sass";
 
+import "../../node_modules/prismjs/themes/prism-tomorrow.css";
+
+// import('https://unpkg.com/prism-themes@1.0.1/themes/prism-ghcolors.css');
+
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet title="Home | Gatsby + Netlify CMS" />
