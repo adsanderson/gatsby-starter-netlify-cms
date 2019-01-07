@@ -4,13 +4,13 @@ title: A UI testing approach
 date: 2018-12-31T13:41:45.250Z
 description: 'or: How I wrote the same 3 tests over and over again'
 tags:
-  - Develoment testing
+  - Development testing
 ---
 We are going to look at one way of structuring an app to help make your testing life easier.
 
 ### The architectural building block
 
-At a high level this is the fundamental rule that we are trying to followin the architecture of our application:
+At a high level this is the fundamental rule that we are trying to following the architecture of our application:
 
 ```js
 const updatePipeline = evt => updateUi(updateState(evt.detail.action))
@@ -38,7 +38,7 @@ Once the state is updated, we then update our UI with the new state. This can be
 
 At it's core there are three packages that makeup the application, with other packages and modules having important roles. A UI update module, that is responsible for taking the state and updating the UI based on the state. Generally there needs to be a DOM element to bind the UI too. The signature of this function should look something like `DOMElement -> State -> void` The function would not return anything but the side-effect would be an updated UI.
 
-The next module would be the for the pipelines. This is where the core of the work happens and as such this module has the dependencies. Generally I would say two dependencies are required. First the update UI function and the second a library for the remote calls. The advantage of having these 2 dependencies is the ability to mock them out and leaving you with more deterministic tests. A pipeline function could be responsible for multiple updates to the UI; imagine the fetchUser pipeline:
+The next module would be the for the "pipeline" functions. This is where the core of the work happens. Generally I would say two dependencies are required. First the update UI function and the second a library for the remote calls. The advantage of having these 2 dependencies is the ability to mock them out and leaving you with more deterministic tests. A pipeline function could be responsible for multiple updates to the UI; imagine the fetchUser pipeline:
 
 ```mermaid
 graph TD
@@ -114,6 +114,6 @@ expect(firstCallToUi.value).toBe(expectedValue);
 
 This way we are testing the state changes, the potential paths through the pipeline and multiple state updates in the pipeline.
 
-### Wrap
+### Obvious testing
 
-I like this application structure of pipelines, UI updates and delegated events.
+Bending your architecture to testing is one way you can make testing easier, more obvious and more likely to happen. With the approach above I think you have a clean separation of roles that can compose together at a component level up to an application level.

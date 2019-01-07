@@ -2,6 +2,7 @@
 templateKey: blog-post
 title: A quick look at testing behaviour
 date: 2015-08-12 00:00:00
+description: 'or: How I learned to not test the how'
 tags:
 - Development
 - TDD

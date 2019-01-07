@@ -20,16 +20,9 @@ export default class IndexPage extends React.Component {
                     <Link className="has-text-primary" to={post.fields.slug}>
                       {post.frontmatter.title}
                     </Link>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
                   </p>
                   <p>
                     {post.frontmatter.description}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
                   </p>
                 </div>
               ))}
@@ -62,6 +55,7 @@ export const pageQuery = graphql`
             title
             templateKey
             date(formatString: "MMMM DD, YYYY")
+            description
           }
         }
       }
