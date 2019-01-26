@@ -1,25 +1,18 @@
 import React from "react";
 import { Link } from "gatsby";
 
-const Navbar = () => (
-  <nav className="navbar is-transparent">
-    <ul>
-      <li>
-        <Link to="/" className="navbar-item">
-          Home
-        </Link>
-      </li>
-      <li>
-        <a href="https://github.com/adsanderson" class="nav--icon" title="Github">Github</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/lazydayed" class="nav--icon" title="Twitter">Twitter</a>
-      </li>
-    </ul>
+const Nav = () => (
+  <nav className="nav">
+    <p>
+      <a href="https://github.com/adsanderson" class="nav__link" title="Github">Github</a>
+    </p>
+    <p>
+      <a href="https://twitter.com/lazydayed" class="nav__link" title="Twitter">Twitter</a>
+    </p>
   </nav>
 );
 
-export default Navbar;
+export default Nav;
 
 
 /*

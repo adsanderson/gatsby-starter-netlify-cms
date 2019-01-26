@@ -1,56 +1,52 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, graphql } from "gatsby";
+import Layout from "../components/Layout";
 
 export default class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
 
     return (
       <Layout>
-            {posts
-              .map(({ node: post }) => (
-                <div
-                  className="post"
-                  key={post.id}
-                >
-                  <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {post.frontmatter.description}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
-                </div>
-              ))}
+        <header className="header">
+          <h1 className="header__title">Devtings</h1>
+          <h2 className="header__subtitle">A blog by Adam Sanderson</h2>
+        </header>
+        {posts.map(({ node: post }) => (
+          <div className="post" key={post.id}>
+            <p>
+              <Link className="post__link" to={post.fields.slug}>
+                <span>
+                {post.frontmatter.title}
+                </span>
+              </Link>
+              &nbsp;
+              <span className="post__strangelove">
+                {post.frontmatter.description}
+              </span>
+            </p>
+          </div>
+        ))}
       </Layout>
-    )
+    );
   }
 }
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
     ) {
       edges {
         node {
@@ -62,9 +58,10 @@ export const pageQuery = graphql`
             title
             templateKey
             date(formatString: "MMMM DD, YYYY")
+            description
           }
         }
       }
     }
   }
-`
+`;

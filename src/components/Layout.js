@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 
-import Navbar from "../components/Navbar";
+import Nav from "../components/Navbar";
 import "./all.sass";
 
 import "../../node_modules/prismjs/themes/prism-tomorrow.css";
@@ -11,8 +11,8 @@ import "../../node_modules/prismjs/themes/prism-tomorrow.css";
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet title="Home | Gatsby + Netlify CMS" />
-    <Navbar />
     {children}
+    <Nav />
   </div>
 );
 
