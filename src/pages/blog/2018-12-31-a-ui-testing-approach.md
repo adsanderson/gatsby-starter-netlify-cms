@@ -4,7 +4,8 @@ title: A UI testing approach
 date: 2018-12-31T13:41:45.250Z
 description: 'or: How I wrote the same 3 tests over and over again'
 tags:
-  - Development testing
+  - development
+  - testing
 ---
 We are going to look at one way of structuring an app to help make your testing life easier.
 

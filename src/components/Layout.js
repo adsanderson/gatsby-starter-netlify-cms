@@ -10,7 +10,7 @@ import "../../node_modules/prismjs/themes/prism-tomorrow.css";
 
 const TemplateWrapper = ({ children }) => (
   <div>
-    <Helmet title="Home | Gatsby + Netlify CMS" />
+    <Helmet title="Home | Devtings" />
     {children}
     <Nav />
   </div>

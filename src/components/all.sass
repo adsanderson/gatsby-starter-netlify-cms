@@ -69,11 +69,19 @@ body
     box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 68px
     padding: 1rem
 
+.blog-post
+  a
+    color: #9a2314
+    text-decoration: none
+    &:hover
+      color: $highlight
+      text-decoration: underline
+
 .blog-post ~ .nav
-  margin: 0 auto
+  margin: 8rem auto 0 auto
 
 .nav
-  margin: 3rem 0 0 0
+  margin: 8rem 0 0 0
   display: flex
   flex-direction: column
   border-bottom: 2px solid $highlight
@@ -104,3 +112,13 @@ body
   &__img
     z-index: -1
     position: relative
+
+.tag-list
+  list-style: none
+  padding: 0 0 3rem 0
+  &__item
+    text-decoration: none
+    color: $link
+    &:hover
+      color: $highlight
+      text-decoration: underline
