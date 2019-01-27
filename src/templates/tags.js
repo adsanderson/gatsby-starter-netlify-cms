@@ -33,7 +33,7 @@ class TagRoute extends React.Component {
                 <h3 className="blog-post__title">{tagHeader}</h3>
                 {postLinks}
                 <p>
-                  <Link to="/tags/">Browse all tags</Link>
+                  <Link className="post__link" to="/tags/">Browse all tags</Link>
                 </p>
               </div>
             </div>
