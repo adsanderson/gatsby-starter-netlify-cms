@@ -22,16 +22,16 @@ const baseObj = {
 const newObj = {...baseObj, updatedTimes: 1}
 ```
 
-### Why are they useful
+### Find the tree in the forest
 
-They save time and code. Lets start with a simple function `bigObject -> result`. We pass our bigObject into the function and get a result at the end. To test this we would have something like this:
+Lets start with a simple function `bigObject -> result` we want to test. We pass our bigObject into the function and get a result at the end. To test this we would have something like this:
 
 ```JavaScript
 const bigObject = { //... lots of parameters }
 expect(foo(bigObject)).toBe(expectedResult);
 ```
 
-When we get to our second test we start by creating another `bigObject` this time with one parameter different. Now we are in spot the difference territory, the two tests look almost identical but with one small difference in the `bigObject`.   
+When we get to our second test we start by creating another `bigObject` this time with one parameter different. Now we are in spot the difference territory, the two tests look almost identical but with one small difference in the `secondbigObject`.   
 
 ```JavaScript
 const bigObject = { 
@@ -73,3 +73,4 @@ expect(foo(secondBigObject)).toBe(secondExpectedResult);
 ```
 
 The change is so much clearer to see now. The second test is against the baseObject with a `subtle: "difference"`. 
+
