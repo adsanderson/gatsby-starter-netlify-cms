@@ -74,3 +74,11 @@ expect(foo(secondBigObject)).toBe(secondExpectedResult);
 
 The change is so much clearer to see now. The second test is against the baseObject with a `subtle: "difference"`. 
 
+### Change happens
+
+Another advantage of copying with our objects is when it comes time to refactor. Lets say we realise our `isBig` property is not actually boolean, but rather an enumeration. We need to change `sizeState: boolean` to `isBig: "Big" | "Small" | "Relative"`. 
+
+The refactoring of our new object every time would involve changing every object, and making sure that each "true" became "Big" and each "false" became "Small". Having to make a change to every test that uses this object while at the same time that property may not impact on the test is a pain.
+
+In out "copy with" technique world, we change our base object. Then anywhere with isBig different to the base gets updated. 
+
