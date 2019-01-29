@@ -26,14 +26,14 @@ const newObj = {...baseObj, updatedTimes: 1}
 
 Lets start with a simple function `bigObject -> result` we want to test. We pass our bigObject into the function and get a result at the end. To test this we would have something like this:
 
-```JavaScript
+```js
 const bigObject = { //... lots of parameters }
 expect(foo(bigObject)).toBe(expectedResult);
 ```
 
 When we get to our second test we start by creating another `bigObject` this time with one parameter different. Now we are in spot the difference territory, the two tests look almost identical but with one small difference in the `secondbigObject`.   
 
-```JavaScript
+```js
 const bigObject = { 
   first: "here is the first param",
   last: "here is the last param",
@@ -55,7 +55,7 @@ expect(foo(secondBigObject)).toBe(secondExpectedResult);
 
 Lets see how this looks when we use our simple copy with technique:
 
-```JavaScript
+```js
 const baseObject = { 
   first: "here is the first param",
   last: "here is the last param",
