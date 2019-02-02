@@ -3,11 +3,12 @@ backend:
   branch: master
 
 media_folder: static/img
+
 media_library:
   name: cloudinary
   config:
-    cloud_name: ${CLOUDNAME}
-    api_key: ${CLOUDINARYAPIKEY}
+    cloud_name: ${CLOUDINARY_CLOUD_NAME}
+    api_key: ${CLOUDINARY_API_KEY}
 
 public_folder: /img
 
