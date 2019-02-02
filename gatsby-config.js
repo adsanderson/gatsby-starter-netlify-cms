@@ -1,3 +1,5 @@
+console.log('PROCESS ENV;;;;;;;;;;', process, process.env);
+
 module.exports = {
   siteMetadata: {
     title: "adamsanderson.co.uk",
