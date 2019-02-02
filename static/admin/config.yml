@@ -3,9 +3,16 @@ backend:
   branch: master
 
 media_folder: static/img
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: ${CLOUDNAME}
+    api_key: ${CLOUDINARYAPIKEY}
+
 public_folder: /img
 
 publish_mode: editorial_workflow
+
 
 collections:
   - name: "blog"
