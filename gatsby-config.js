@@ -1,4 +1,7 @@
-console.log('PROCESS ENV;;;;;;;;;;', process, process.env);
+const envMap = require("./env");
+
+envMap.set("CLOUDINARY_CLOUD_NAME", process.env.CLOUDINARY_CLOUD_NAME);
+envMap.set("CLOUDINARY_API_KEY", process.env.CLOUDINARY_API_KEY);
 
 module.exports = {
   siteMetadata: {
@@ -44,9 +47,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-      // replace "UA-XXXXXXXXX-X" with your own Tracking ID
-        trackingId: "UA-1951739-9",
-      },
+        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
+        trackingId: "UA-1951739-9"
+      }
     },
     {
       resolve: "gatsby-plugin-netlify-cms",
