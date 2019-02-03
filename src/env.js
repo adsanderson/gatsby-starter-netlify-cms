@@ -1,3 +1,5 @@
-exports.modules = {
-  envMap: new Map()
+const envMap = new Map();
+
+module.exports = {
+  envMap: envMap
 }
