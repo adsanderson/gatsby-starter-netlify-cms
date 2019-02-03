@@ -1,9 +1,9 @@
-const fs = ('fs');
+// const fs = ('fs');
 
-fs.writeFileSync(`${__dirname}/src/env.json`, JSON.stringify({
-  CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
-  CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY
-}))
+// fs.writeFileSync(`${__dirname}/src/env.json`, JSON.stringify({
+//   CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+//   CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY
+// }))
 
 module.exports = {
   siteMetadata: {
