@@ -1,9 +1,8 @@
-// const fs = ('fs');
+const {envMap} = require("./src/env");
 
-// fs.writeFileSync(`${__dirname}/src/env.json`, JSON.stringify({
-//   CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
-//   CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY
-// }))
+envMap.set("CLOUDINARY_CLOUD_NAME", process.env.CLOUDINARY_CLOUD_NAME);
+envMap.set("CLOUDINARY_API_KEY", process.env.CLOUDINARY_API_KEY);
+
 
 module.exports = {
   siteMetadata: {
