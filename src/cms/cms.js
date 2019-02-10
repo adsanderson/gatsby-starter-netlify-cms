@@ -4,7 +4,7 @@ import AboutPagePreview from "./preview-templates/AboutPagePreview";
 import BlogPostPreview from "./preview-templates/BlogPostPreview";
 import ProductPagePreview from "./preview-templates/ProductPagePreview";
 
-import * as x from '../env'
+import env from "./env.json";
 
 CMS.registerPreviewTemplate("about", AboutPagePreview);
 CMS.registerPreviewTemplate("products", ProductPagePreview);
@@ -15,8 +15,8 @@ init({
     media_library: {
       name: "cloudinary",
       config: {
-        cloud_name: x.envMap.get("CLOUDINARY_CLOUD_NAME"),
-        api_key: x.envMap.get("CLOUDINARY_API_KEY")
+        cloud_name: env.CLOUDINARY_CLOUD_NAME,
+        api_key: env.CLOUDINARY_API_KEY
       }
     }
   }

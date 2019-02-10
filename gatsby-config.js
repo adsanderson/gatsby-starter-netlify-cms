@@ -1,9 +1,3 @@
-const {envMap} = require("./src/env");
-
-envMap.set("CLOUDINARY_CLOUD_NAME", process.env.CLOUDINARY_CLOUD_NAME);
-envMap.set("CLOUDINARY_API_KEY", process.env.CLOUDINARY_API_KEY);
-
-
 module.exports = {
   siteMetadata: {
     title: "adamsanderson.co.uk",
