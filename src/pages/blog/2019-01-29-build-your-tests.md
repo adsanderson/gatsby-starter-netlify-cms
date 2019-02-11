@@ -82,6 +82,12 @@ The refactoring of our new object every time would involve changing every object
 
 In out "copy with" technique world, we change our base object. Then anywhere with isBig different to the base gets updated. 
 
+### As a function
+
+If we want to we can wrap up the data builder into a function, with a builder pattern.
+
+A TypeScript implementation below:
+
 ```typescript
 type PartialObj<Obj extends { [key: string]: any }> = { [Prop in keyof Obj]?: Obj[Prop] };
 
