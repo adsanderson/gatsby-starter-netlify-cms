@@ -17,9 +17,9 @@ A data builder is a "copy with" tool. The databuilder "copies" an object and the
 
 ```js
 const baseObj = {
-  updatedTimes: 0
+  count: 0
 }
-const newObj = {...baseObj, updatedTimes: 1}
+const newObj = {...baseObj, count: 1}
 ```
 
 ### Find the tree in the forest
@@ -76,9 +76,25 @@ The change is so much clearer to see now. The second test is against the baseObj
 
 ### Change happens
 
-Another advantage of copying with our objects is when it comes time to refactor. Lets say we realise our `isBig` property is not actually boolean, but rather an enumeration. We need to change `isBig: boolean` to `sizeState: "Big" | "Small" | "Relative"`. 
+Another advantage of copying with our objects is when it comes time to extend or  refactor. Lets say we realise our `isBig` property is not actually boolean, but rather an enumeration. We need to change `isBig: boolean` to `sizeState: "Big" | "Small" | "Relative"`. 
 
 The refactoring of our new object every time would involve changing every object, and making sure that each "true" became "Big" and each "false" became "Small". Having to make a change to every test that uses this object while at the same time that property may not impact on the test is a pain.
 
 In out "copy with" technique world, we change our base object. Then anywhere with isBig different to the base gets updated. 
 
+```typescript
+type PartialObj<Obj extends { [key: string]: any }> = { [Prop in keyof Obj]?: Obj[Prop] };
+
+function dataBuilderFactory<Obj extends { [key: string]: any }>(obj: Obj) {
+    return {
+        with: (partial: PartialObj<Obj>) => {
+            const updateObj = {
+                ...(obj as { [key: string]: any }),
+                ...(partial as { [key: string]: any })
+            } as Obj;
+            return dataBuilderFactory(updateObj);
+        },
+        build: () => ({ ...(obj as { [key: string]: any }) } as Obj)
+    };
+}
+```
