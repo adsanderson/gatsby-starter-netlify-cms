@@ -92,15 +92,15 @@ A TypeScript implementation below:
 type PartialObj<Obj extends { [key: string]: any }> = { [Prop in keyof Obj]?: Obj[Prop] };
 
 function dataBuilderFactory<Obj extends { [key: string]: any }>(obj: Obj) {
-    return {
-        with: (partial: PartialObj<Obj>) => {
-            const updateObj = {
-                ...(obj as { [key: string]: any }),
-                ...(partial as { [key: string]: any })
+  return {
+    with: (partial: PartialObj<Obj>) => {
+      const updateObj = {
+        ...(obj as { [key: string]: any }),
+        ...(partial as { [key: string]: any })
             } as Obj;
-            return dataBuilderFactory(updateObj);
-        },
-        build: () => ({ ...(obj as { [key: string]: any }) } as Obj)
-    };
+      return dataBuilderFactory(updateObj);
+    },
+    build: () => ({ ...(obj as { [key: string]: any }) } as Obj)
+  };
 }
 ```
