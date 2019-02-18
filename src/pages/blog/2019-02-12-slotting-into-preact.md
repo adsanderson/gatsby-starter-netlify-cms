@@ -12,8 +12,6 @@ Preact is an excellent UI library and web components make a fantastic building b
 
 ### The issue
 
-You create your custom element,
-
 
 
 ### Why it happens
