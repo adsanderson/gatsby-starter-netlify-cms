@@ -20,6 +20,12 @@ You create your custom element,
 
 When you use a web component using shadow DOM and has a slot you would write something like this:
 
+```html
+<custom-element>
+  <h2>Some heading</h2>
+</custom-element>
+```
+
 ![Initial DOM code](https://res.cloudinary.com/lazydayed/image/upload/v1550479938/Devtings/preactcustomelements/diffing-1.png "Initial DOM code")
 
 The next step is for the web components polyfill to initialise the custom element and add in the additional DOM. 
