@@ -38,12 +38,25 @@ What appears in the actual DOM and the screen is the content of the custom eleme
 
 ### The solution(s)
 
-There are a number of ways to stop this occurring. First if you have control over the web component then to try and have slots in the root of the components template. If the content does not need moving then the component and Preact will match in terms of structure.
+There are a number of ways to stop this occurring. 
 
-This is not always possible, your design system button will want to use an actual button under the hood to take advantage of the existing art.
+#### Move the slot
 
+First if you have control over the web component then to try and have slots in the root of the components template. If the content does not need moving then the component and Preact will match in terms of structure.
 
+This is not always possible, your design system button will want to use an actual button under the hood to take advantage of the existing work.
 
-`shouldComponentUpdate`
+#### Targeted updates
 
-rerender from scratch
+Using the component life-cycle method `shouldComponentUpdate` lets you control when changes occur. 
+
+#### Blow it away
+
+If an update does need to occur then it is best to rerender the entire component rather than try and update the child elements.
+
+The easiest way to do this to define the element within the render method, or if you are using an external Preact component to bind the component within the render method.
+
+```js
+import { ExistingComponent } from "./excistingComponent";
+const RerenderComponent = ExistingComponent .bind(null);
+```
