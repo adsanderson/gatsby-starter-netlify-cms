@@ -24,19 +24,37 @@ When you use a web component using shadow DOM and has a slot you would write som
 </custom-element>
 ```
 
-![Initial DOM code](https://res.cloudinary.com/lazydayed/image/upload/v1550479938/Devtings/preactcustomelements/diffing-1.png "Initial DOM code")
-
 The next step is for the web components polyfill to initialise the custom element and add in the additional DOM. 
 
-![Initial DOM code](https://res.cloudinary.com/lazydayed/image/upload/v1550479938/Devtings/preactcustomelements/diffing-2.png "Initial DOM code")
+```html
+<custom-element>
+  <div class="custom-element__wrapper">
+    <slot>
+  </div>
+  <h2>Some heading</h2>
+</custom-element>
+```
 
 The polyfill then moves the child elements fro the custom element node and places them inside the additional DOM of the custom element.
 
-![Initial DOM code](https://res.cloudinary.com/lazydayed/image/upload/v1550479938/Devtings/preactcustomelements/diffing-3.png "Initial DOM code")
+```html
+<custom-element>
+  <div class="custom-element__wrapper">
+    <h2>Some heading</h2>
+  </div>  
+</custom-element>
+```
 
 When an update occurs in Preact this is where the issue occurs. Preact will diff it's derived V-DOM against the actual DOM and find that the the custom elements child content is missing from it's root and will then insert it.
 
-![Initial DOM code](https://res.cloudinary.com/lazydayed/image/upload/v1550479938/Devtings/preactcustomelements/diffing-4.png "Initial DOM code")
+```html
+<custom-element>
+  <div class="custom-element__wrapper">
+    <h2>Some heading</h2>
+  </div> 
+  <h2>Some heading</h2>
+</custom-element>
+```
 
 What appears in the actual DOM and the screen is the content of the custom element doubling up, usually with different styling.
 
