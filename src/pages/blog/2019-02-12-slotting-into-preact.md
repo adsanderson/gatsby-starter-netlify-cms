@@ -8,13 +8,15 @@ tags:
   - web components
   - preact
 ---
-Preact is an excellent UI library and web components make a fantastic building block. But, I have found one stumbling block that relates to the `<slot>` element in browsers without the shadow DOM.
+Preact is an excellent UI library and web components make a fantastic building block. But, I have found one stumbling block that relates to the `<slot>` element in browsers without the shadow DOM and using the a polyfill.
 
 ### The issue
 
+The issue is after an update content appears twice, once as expected and then the same DOM content but usually styled slightly differently.
 
+What is happening is the polyfill will move content so it no longer matches the VDOM internal to Preact.
 
-### Why it happens
+### What is happening
 
 When you use a web component using shadow DOM and has a slot you would write something like this:
 
@@ -60,13 +62,13 @@ What appears in the actual DOM and the screen is the content of the custom eleme
 
 ### The solution(s)
 
-There are a number of ways to stop this occurring. 
+There are a number of ways to mitigate the impact this has, first:
 
 #### Move the slot
 
-First if you have control over the web component then to try and have slots in the root of the components template. If the content does not need moving then the component and Preact will match in terms of structure.
+If you have control over the web component then to try and have slots in the root of the components template. If the content does not need moving then the component's output and Preact's VDOM will match in terms of structure.
 
-This is not always possible, your design system button will want to use an actual button under the hood to take advantage of the existing work.
+This is not always possible, for example your design system button will want to use an actual button under the hood to take advantage of it's semantic meaning.
 
 #### Targeted updates
 
