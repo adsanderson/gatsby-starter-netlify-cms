@@ -74,6 +74,8 @@ This is not always possible, for example your design system button will want to 
 
 Using the component life-cycle method `shouldComponentUpdate` lets you control when changes occur. 
 
+Then when you do need to update then it's best to:
+
 #### Blow it away
 
 If an update does need to occur then it is best to rerender the entire component rather than try and update the child elements.
