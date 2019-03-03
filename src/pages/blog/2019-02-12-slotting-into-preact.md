@@ -72,7 +72,7 @@ This is not always possible, for example your design system button will want to 
 
 #### Targeted updates
 
-Using the component life-cycle method `shouldComponentUpdate` lets you control when changes occur. 
+Using the component life-cycle method `shouldComponentUpdate` lets you control when changes occur. This means when an update is triggered higher in the tree of the application you can check to see if the props passed to the custom element have changed and then if they are the same then stop the update process. Stopping the VDOM and actual DOM diffing against each other.
 
 Then when you do need to update then it's best to:
 
@@ -84,5 +84,5 @@ The easiest way to do this to define the element within the render method, or if
 
 ```js
 import { ExistingComponent } from "./excistingComponent";
-const RerenderComponent = ExistingComponent .bind(null);
+const RerenderComponent = ExistingComponent.bind(null);
 ```
