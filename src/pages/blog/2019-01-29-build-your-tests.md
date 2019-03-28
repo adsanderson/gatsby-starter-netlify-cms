@@ -7,7 +7,7 @@ tags:
   - development
   - testing
 ---
-When writing automated tests you end up with a lot of similar code. Patterns repeat with slight variations each time. One of the tools I have found that helps a huge amount with tests are data builders.
+When writing automated tests you end up with a lot of similar code. Patterns repeat with slight variations each time. Using the data builder pattern can help reduce boilerplate and let those variation leap out.
 
 It was this series of [blog posts](http://blog.ploeh.dk/2017/08/15/test-data-builders-in-c/) by Mark Seemann that introduced me to the idea of data builders.
 
@@ -82,6 +82,8 @@ The refactoring of our new object every time would involve changing every object
 
 In out "copy with" technique world, we change our base object. Then anywhere with isBig different to the base gets updated. 
 
+Finally we can extend our tests with the new state.
+
 ### As a function
 
 If we want to we can wrap up the data builder into a function, with a builder pattern.
@@ -104,3 +106,7 @@ function dataBuilderFactory<Obj extends { [key: string]: any }>(obj: Obj) {
   };
 }
 ```
+
+### Semi-permanence
+
+  
