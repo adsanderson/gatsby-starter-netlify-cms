@@ -16,6 +16,10 @@ and then the more interesting follow up:
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+I knew about integration tests, E2E tests and static types, I'd heard of property-based testing but had never delved too much. Model-based testing I had not heard of before and decided to look into it.
 
+### What is model-based testing
 
-I knew about integration tests, E2E tests and static types, I'd heard of property-based testing but had never delved too much.
+### How to 
+
+### Testing idea
