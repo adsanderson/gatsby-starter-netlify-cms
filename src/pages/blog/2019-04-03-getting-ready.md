@@ -20,8 +20,10 @@ I knew about integration tests, E2E tests and static types, I'd heard of propert
 
 ### What is model-based testing
 
-There are different flavours of Model-based testing, but the one we will focus on is those powered by state charts.
+There are different flavours of Model-based testing, but the one we will focus on is those for UIs powered by state charts.
 
-### How to 
+A Model-based test is a test that compares a model (state chart) to an actual implementation. 
+
+You start by creating a state chart that represents the behaviour of your UI, vertices are the different states of your UI and 
 
 ### Testing idea
