@@ -27,3 +27,5 @@ A Model-based test is a test that compares a model (state chart) to an actual im
 You start by creating a state chart that represents the behaviour of your UI, vertices are the different states of your UI and 
 
 ### Testing idea
+
+Test the implementation exposes the model, not compare to the model
