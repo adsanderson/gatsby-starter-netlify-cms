@@ -42,8 +42,9 @@ A lookup can work here:
 
 ```js
 const interactions = {
-  green: {       
-    SWITCH: container => fireEvent.click(getByText(container, "Switch"))
+  green: {
+    SWITCH: container => 
+      fireEvent.click(getByText(container, "Switch"))
   }
 };
 ```
@@ -52,7 +53,8 @@ This leaves us with the job of validating that we are in the correct state after
 
 ```js
 const compare = {
-  green: container =>  expect(getByTestId(container, "state-value").innerText).toBe("green");
+  green: container => 
+    expect(getByTestId(container, "state-value").innerText).toBe("green");
 };
 ```
 
