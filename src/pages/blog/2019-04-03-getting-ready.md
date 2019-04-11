@@ -18,7 +18,13 @@ To write a model based test for a component, you need a state chart. This state 
 
 ![light machine state chart, going from green to amber to red with switch events and a stop event to go straight to red](https://res.cloudinary.com/lazydayed/image/upload/v1554714019/Devtings/light-machine.png "Light state chart")
 
-Then from the state chart you are able to generate a series of paths, that step through through each state via an action.
+Then from the state chart you are able to generate a series of paths, that step through through each state via an action. The above state chart generates the following paths:
+
+```mermaid
+graph LR
+G1[Green]
+G2[Green] -->|Switch|A2[Amber]
+```
 
 The next piece is to validate that you are in the correct state, for a component this maybe asserting that the correct information is displayed on the page.
 
