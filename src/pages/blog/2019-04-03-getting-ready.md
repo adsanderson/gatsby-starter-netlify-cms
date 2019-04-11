@@ -23,7 +23,17 @@ Then from the state chart you are able to generate a series of paths, that step 
 ```mermaid
 graph LR
 G1[Green]
+
 G2[Green] -->|Switch|A2[Amber]
+
+G4[Green] -->|Switch|A4[Amber]
+A4 -->|Switch|R4[Red]
+
+G3[Green] -->|Switch|A3[Amber]
+A3 -->|Stop|R3[Red]
+
+G5[Green] -->|Stop|R5[Red]
+
 ```
 
 The next piece is to validate that you are in the correct state, for a component this maybe asserting that the correct information is displayed on the page.
