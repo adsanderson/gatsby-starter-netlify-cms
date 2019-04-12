@@ -5,6 +5,7 @@ date: 2019-04-03T10:29:44.879Z
 description: 'or: How I learned to generate tests'
 tags:
   - model-based testing
+  - testing
 ---
 Model-based testing is the process of creating a model (an abstract version) of the behaviour of a system. Then executing the model so it is run over an implementation. Then validating that the system under tests behaves the same way as the model.
 
@@ -41,7 +42,7 @@ Once we have the paths we need a way of interacting with the component to trigge
 A lookup can work here:
 
 ```js
-const interactions = {
+const triggerEvents = {
   green: {
     SWITCH: container => 
       fireEvent.click(getByText(container, "Switch"))
@@ -62,3 +63,18 @@ Run your tests iterating through each path and you will cover the routes through
 
 ### But what got tested?
 
+Firstly we have tested that the the events are triggered as expected. In the above example we are expecting to find an element with the word "Switch" and for that element to be clickable.
+
+Are first test is: "Do the triggers exist in the component".
+
+This leads onto a side-effect of the trigger testing. If you have an event but no way of triggering it through the component, then those tests will fail.
+
+The next test is that the states transition as expected. If your event trigger takes you to somewhere not expected. Then the test will fail.
+
+The next overall test is: "Do the triggers transition the state correctly".
+
+### Conclusion
+
+Model-based testing is a fascinating tool 
+
+<iframe src="https://codesandbox.io/embed/v0o9xv4n67?fontsize=14" title="xstate model-based testing" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
