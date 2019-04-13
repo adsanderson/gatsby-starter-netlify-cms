@@ -73,13 +73,18 @@ The next test is that the states transition as expected. If your event trigger t
 
 The next overall test is: "Do the triggers transition the state correctly".
 
-### In practice
+### What does it look like in practice
 
-Here is an example using [xstate](https://xstate.js.org/) and react-testing-library to model a simple state chart and validate it has been implemented correctly.
+Here is an early example using [xstate](https://xstate.js.org/) and react-testing-library to model, implement and test a simple state chart. It generates the paths using `@xstate/graph` and then uses a lookup for the events and the state validation.
 
 <iframe src="https://codesandbox.io/embed/v0o9xv4n67?fontsize=14" title="xstate model-based testing" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ### Conclusion
 
-Model-based testing is a fascinating tool, generating the paths through an application and then confirming are implementation traverses the paths correctly  
+Model-based testing is a fascinating tool, generating the paths through an application or component and then confirming the implementation traverses the paths correctly is a powerful way to test a code-base.  
+
+### Thoughts from me
+
+This is a topic I am still in the early stages of exploring and leaning heavily on XState and [GraphWalker](http://graphwalker.github.io) for my understanding. I need to cover more complex charts, fit in context, understand how to use example and property based testing for more complex interactions, e.g. things like forms; and how to treat multiple transition event triggers for the same path, e.g. testing mouse and keyboard interactions.  
+ 
 
