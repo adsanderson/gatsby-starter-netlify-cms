@@ -19,7 +19,7 @@ To write a model based test for a component, you need a state chart. This state 
 
 ![light machine state chart, going from green to amber to red with switch events and a stop event to go straight to red](https://res.cloudinary.com/lazydayed/image/upload/v1554714019/Devtings/light-machine.png "Light state chart")
 
-Then from the state chart you are able to generate a series of paths, that step through through each state via an action. The above state chart generates the following paths:
+Then from the state chart using graph theory you are able to generate a series of paths, that step through through each state via an event. The above state chart generates the following paths:
 
 ```mermaid
 graph LR
@@ -37,7 +37,7 @@ G5[green] -->|STOP|R5[red]
 
 ```
 
-Once we have the paths we need a way of interacting with the component to trigger the events that are on each step of the path. This is where something like a [DOM-testing-library](https://testing-library.com/) is very useful. We can say given the state is `Green` and when the event is `Switch` then find the Switch button on the page a press it. 
+Once we have the paths, we need a way of interacting with the component to trigger the events that are on each step of the path. This is where something like [DOM-testing-library](https://testing-library.com/) is very useful. We can say given the state is `Green` and when the event is `Switch` then find the Switch button on the page a press it. 
 
 A lookup can work here:
 
@@ -67,7 +67,7 @@ Firstly we have tested that the the events are triggered as expected. In the abo
 
 Are first test is: "Do the triggers we expect exist in the component".
 
-This leads onto a side-effect of the trigger testing. If you have an event but no way of triggering it through the component, then those tests won't run.
+This leads onto a side-effect of the trigger testing. If you have an event but no way of triggering it, then those tests won't run.
 
 The next test is that the states transition as expected. If your event trigger takes you to somewhere not expected. Then the test will fail.
 
