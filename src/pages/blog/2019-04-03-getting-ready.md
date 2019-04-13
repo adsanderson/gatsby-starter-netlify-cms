@@ -17,6 +17,8 @@ I will start by introducing the pieces of a model-based test and how they fit to
 
 To write a model based test for a component, you need a state chart. This state chart will define the states of your component, and the events that transfer between the states.  
 
+This state chart was created using [XState](https://xstate.js.org/), and it's visualiser:
+
 ![light machine state chart, going from green to amber to red with switch events and a stop event to go straight to red](https://res.cloudinary.com/lazydayed/image/upload/v1554714019/Devtings/light-machine.png "Light state chart")
 
 Then from the state chart using graph theory you are able to generate a series of paths, that step through through each state via an event. The above state chart generates the following paths:
@@ -75,7 +77,7 @@ The next overall test is: "Do the triggers transition the state correctly".
 
 ### What does it look like in practice
 
-Here is an early example using [xstate](https://xstate.js.org/) and react-testing-library to model, implement and test a simple state chart. It generates the paths using `@xstate/graph` and then uses a lookup for the events and the state validation.
+Here is an early example using XState and react-testing-library to model, implement and test a simple state chart. It generates the paths using `@xstate/graph` and then uses a lookup for the events and the state validation.
 
 <iframe src="https://codesandbox.io/embed/v0o9xv4n67?fontsize=14" title="xstate model-based testing" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
