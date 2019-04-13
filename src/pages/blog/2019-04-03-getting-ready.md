@@ -9,7 +9,7 @@ tags:
 ---
 Model-based testing is the process of creating a model (an abstract version) of the behaviour of a system. Then executing the model so it is run over an implementation. Then validating that the system under tests behaves the same way as the model.
 
-Before we start there are multiple types of model-based test. The one we will explore is state chart powered model-based testing. This is an early exploration of the ideas around model based testing and as such will develop over time.
+Before we start there are multiple types of model-based test. The one we will explore is state chart powered model-based testing. This is an early exploration of the ideas around model-based testing and as such will develop over time.
 
 I will start by introducing the pieces of a model-based test and how they fit together, then go through what is being tested.
 
