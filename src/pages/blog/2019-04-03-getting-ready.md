@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: Adventures in Model-based testing
+title: First steps in Model-based testing
 date: 2019-04-03T10:29:44.879Z
 description: 'or: How I learned to generate tests'
 tags:
