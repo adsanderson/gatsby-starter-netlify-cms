@@ -37,7 +37,7 @@ G5[green] -->|STOP|R5[red]
 
 ```
 
-Once we have the paths we need a way of interacting with the component to trigger the events that are on each step of the path. This is where something like a `*-testing-library` is very useful. We can say given the state is `Green` and when the event is `Switch` then find the Switch button on the page a press it. 
+Once we have the paths we need a way of interacting with the component to trigger the events that are on each step of the path. This is where something like a [DOM-testing-library](https://testing-library.com/) is very useful. We can say given the state is `Green` and when the event is `Switch` then find the Switch button on the page a press it. 
 
 A lookup can work here:
 
@@ -61,20 +61,25 @@ const compare = {
 
 Run your tests iterating through each path and you will cover the routes through your application.
 
-### But what got tested?
+### What got tested?
 
 Firstly we have tested that the the events are triggered as expected. In the above example we are expecting to find an element with the word "Switch" and for that element to be clickable.
 
-Are first test is: "Do the triggers exist in the component".
+Are first test is: "Do the triggers we expect exist in the component".
 
-This leads onto a side-effect of the trigger testing. If you have an event but no way of triggering it through the component, then those tests will fail.
+This leads onto a side-effect of the trigger testing. If you have an event but no way of triggering it through the component, then those tests won't run.
 
 The next test is that the states transition as expected. If your event trigger takes you to somewhere not expected. Then the test will fail.
 
 The next overall test is: "Do the triggers transition the state correctly".
 
-### Conclusion
+### In practice
 
-Model-based testing is a fascinating tool 
+Here is an example using [xstate](https://xstate.js.org/) and react-testing-library to model a simple state chart and validate it has been implemented correctly.
 
 <iframe src="https://codesandbox.io/embed/v0o9xv4n67?fontsize=14" title="xstate model-based testing" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+### Conclusion
+
+Model-based testing is a fascinating tool, generating the paths through an application and then confirming are implementation traverses the paths correctly  
+
