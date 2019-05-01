@@ -131,24 +131,24 @@ const personBuilder = () => dataBuilderFactory<Person>({
   tel: "555-12345"
 });
 
-const annie = personBuilder()
+const adam = personBuilder()
   .with({
-    name: "Annie"
+    name: "Adam"
   })
   .build();
 
-const partialAdam = personBuilder()
+const partialDoc = personBuilder()
   .with({
     name: "Adam"
   });
 
-const adamBorn1981 = partialAdam
+const docBorn1985= partialDoc 
   .with({
     dob: new Date(1985, 3, 30)
   })
   .build()
 
-const adamBorn1881 = partialAdam
+const docBorn1885 = partialDoc 
   .with({
     dob: new Date(1885, 3, 30)
   })
