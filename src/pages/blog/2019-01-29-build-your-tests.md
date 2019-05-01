@@ -116,7 +116,7 @@ function dataBuilderFactory<Obj extends { [key: string]: any }>(obj: Obj) {
 }
 ```
 
-and then to use in anger:
+and then some examples of how to use it:
 
 ```typescript
 interface Person {
