@@ -7,27 +7,36 @@ tags:
   - development
   - testing
 ---
-When writing automated tests you end up with a lot of similar code. Patterns repeat with slight variations each time. Using the data builder pattern can help reduce boilerplate and let those variation leap out.
+When writing automated tests you end up with a lot of similar code. Objects repeat with slight variations each time. Using the data builder pattern can help reduce boilerplate and let those variations leap out.
 
-It was this series of [blog posts](http://blog.ploeh.dk/2017/08/15/test-data-builders-in-c/) by Mark Seemann that introduced me to the idea of data builders.
+It was this series of [blog posts](http://blog.ploeh.dk/2017/08/15/test-data-builders-in-c/) by Mark Seemann that introduced me to the idea of test data builders.
 
-### What is a data builder?
+### What is a test data builder?
 
-A data builder is a "copy with" tool. The databuilder "copies" an object and then can update specified properties "with" new data. The pattern is simple enough to achieve with modern JavaScript and rest parameters.
+A data builder is a "copy with" tool. The data builder "copies" an object and then can update specified properties "with" new data. The pattern is simple enough to achieve with modern JavaScript and rest parameters.
 
 ```js
 const baseObj = {
-  count: 0
+  count: 0,
+  property: "Hi"
 }
 const newObj = {...baseObj, count: 1}
 ```
 
-### Find the tree in the forest
+We end up with two separate objects both that are structurally the same but with a single variation between them.
 
-Lets start with a simple function `bigObject -> result` we want to test. We pass our bigObject into the function and get a result at the end. To test this we would have something like this:
+### How is a data builder useful?
+
+Lets start with a `foo` function `bigObject -> result` we want to test. We pass our bigObject into the function and get a result at the end. To test this we would have something like this:
 
 ```js
-const bigObject = { //... lots of parameters }
+const bigObject = {   
+  first: "here is the first param",
+  last: "here is the last param",
+  howManyParams: 5,
+  subtle: "not so different",
+  isBig: true  
+}
 expect(foo(bigObject)).toBe(expectedResult);
 ```
 
@@ -76,11 +85,11 @@ The change is so much clearer to see now. The second test is against the baseObj
 
 ### Change happens
 
-Another advantage of copying with our objects is when it comes time to extend or  refactor. Lets say we realise our `isBig` property is not actually boolean, but rather an enumeration. We need to change `isBig: boolean` to `sizeState: "Big" | "Small" | "Relative"`. 
+Another advantage of using the "copy with" technique is when it comes time to extend or refactor. Lets say we realise our `isBig` property is not actually boolean, but rather an enumeration. We need to change `isBig: boolean` to `sizeState: "Big" | "Small" | "Relative"`. 
 
 The refactoring of our new object every time would involve changing every object, and making sure that each "true" became "Big" and each "false" became "Small". Having to make a change to every test that uses this object while at the same time that property may not impact on the test is a pain.
 
-In out "copy with" technique world, we change our base object. Then anywhere with isBig different to the base gets updated. 
+In our "copy with" technique world, we change our base object. Then anywhere with isBig different to the base gets updated. 
 
 Finally we can extend our tests with the new state.
 
