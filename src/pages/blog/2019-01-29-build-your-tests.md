@@ -139,7 +139,7 @@ const adam = personBuilder()
 
 const partialDoc = personBuilder()
   .with({
-    name: "Adam"
+    name: "Doc Brown"
   });
 
 const docBorn1985= partialDoc 
