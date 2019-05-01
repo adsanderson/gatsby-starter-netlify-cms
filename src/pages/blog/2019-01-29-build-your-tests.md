@@ -116,6 +116,45 @@ function dataBuilderFactory<Obj extends { [key: string]: any }>(obj: Obj) {
 }
 ```
 
+and then to use in anger:
+
+```typescript
+interface Person {
+  name: string;
+  dob: Date;
+  tel: string;
+}
+
+const personBuilder = () => dataBuilderFactory<Person>({
+  name: "test name",
+  dob: new Date(2019, 3, 30),
+  tel: "555-12345"
+});
+
+const annie = personBuilder()
+  .with({
+    name: "Annie"
+  })
+  .build();
+
+const partialAdam = personBuilder()
+  .with({
+    name: "Adam"
+  });
+
+const adamBorn1981 = partialAdam
+  .with({
+    dob: new Date(1985, 3, 30)
+  })
+  .build()
+
+const adamBorn1881 = partialAdam
+  .with({
+    dob: new Date(1885, 3, 30)
+  })
+  .build()
+```
+
 This is useful with simple objects, when you want to go one level deep. With more complex objects and structures tools for immutability become much more useful.  
 
 ### The power of test data builders
