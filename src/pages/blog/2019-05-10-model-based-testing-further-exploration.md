@@ -12,7 +12,9 @@ As I progressed with the exploration I kept finding myself with more and more qu
 
 ### Config, machines and services
 
-Let's start with promises and the generated paths. The paths generated from a state chart comes in three stages: `initial state -> event -> final state`. With the first exploration we found that we need to configure a way of validating each state, and a way of triggering actions.
+Let's start with promises and the generated paths. The paths generated from a state chart can be broken into a series of three stages: `initial state -> event -> final state`. With the first exploration we found that we need to configure a way of validating each state, and a way of triggering events.
+
+The path tells us what event should happen next. So when calling a promise via a service you get these events `done.invoke.promiseName` and `error.execution`.
 
 
 ### XState and levels
