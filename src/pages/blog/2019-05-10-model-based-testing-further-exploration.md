@@ -26,9 +26,14 @@ The path tells us what event should happen next. So when calling a promise via a
 
 The problem is we now need to mock out the service, and it
 
+### Context and verification
 
 
-### Context
 
+
+
+### How to get answers
+
+Explore and experiment
 
 
