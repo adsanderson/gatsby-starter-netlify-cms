@@ -20,7 +20,6 @@ Here is the state chart powering the component and it's visualisation:
 ```js
  {
     id: "glass",
-    // the initial context (extended state) of the statechart
     context: {
       amount: 0
     },
@@ -66,7 +65,16 @@ We have three states (empty, filling, full), two events to transition between fi
 
 It is possible to represent a state chart as a graph. Each state being a vertex and each transition being an edge. A very simple graph that can be generated from the Glass state chart would look like this:
 
-¬[Graph representation of Glass state chart](https://res.cloudinary.com/lazydayed/image/upload/v1559319236/glass-machine-graph_i44noe.png) 
+![Graph representation of Glass state chart](https://res.cloudinary.com/lazydayed/image/upload/v1559319236/glass-machine-graph_i44noe.png) 
+
+We can move: 
+- from **empty** to **filling**
+- from **filling** to **filling**
+- from **filling** to **full**
+- from **filling** to **empty**
+- from **full** to **empty**
+
+We can't move **empty** to **full**, or from **full** to **filling**
 
 ### Walking the graph
 
