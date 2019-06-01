@@ -14,6 +14,12 @@ A UI (or more likely part of a UI) can be represented by a state chart. We can s
 
 ![Glass component UI](https://res.cloudinary.com/lazydayed/image/upload/v1559403349/glass-component_rkwr4f.png)
 
+The glass can be filled in stages or emptied in one go. The glass can't be overfilled. The state chart powering this component looks like this:
+
+![State chart used for Glass component](https://res.cloudinary.com/lazydayed/image/upload/v1559318478/glass-machine_eywwpc.png)
+
+We have three states (empty, filling, full), two events to transition between filling and emptying, guards to stop over filling and the ability to empty at any point.
+
 ### Walking the graph
 
 ### Automation
