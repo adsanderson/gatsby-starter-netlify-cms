@@ -76,7 +76,12 @@ We can move:
 
 We can't move **empty** to **full**, or from **full** to **filling**
 
-### Walking the graph
+### Testing by walking the graph
+
+Walking the graph refers to moving from state to state via events. We want to make sure the component being tested behaves the same way 
+
+
+This is where [Testing library](https://testing-library.com) as it gives us a wa
 
 ### Automation
 
