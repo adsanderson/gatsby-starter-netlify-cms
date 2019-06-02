@@ -9,8 +9,6 @@ tags:
 
 type PartialObj<Obj extends { \[key: string]: any }> = { \[Prop in keyof Obj]?: Obj\[Prop] };
 
-
-
 function dataBuilderFactory<Obj extends { \[key: string]: any }>(obj: Obj) {
 
   return {
