@@ -27,10 +27,10 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
   - name: "recipes"
-  - label: "Recipe"
-  - folder: "src/pages/recipes"
-  - create: true
-  - fields:
+    label: "Recipe"
+    folder: "src/pages/recipes"
+    create: true
+    fields:
       - {
           label: "Template Key",
           name: "templateKey",
