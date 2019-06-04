@@ -96,14 +96,45 @@ const transistion = {
 
 Whenever we transition from **empty** to **filling** via a **FILL** event. The component should find the button that says "Fill" and click it.
 
-The next step is then to validate that the state (and/or context) is correct. Again using Testing library we can check that the component has updated correctly.
+To then go through multiple steps along the path we fill out the rest of the transitions and end up calling something like this:
+
+```transition
+transistion.empty.FILL(container);
+transistion.filling.FILL(container);
+transistion.filling.FILL(container);
+transistion.filling.FILL(container);
+transistion.full.EMPTY(container);
+```
+
+The next step is then to validate that the state (and/or context) is correct. Again using Testing library we can check that the component has updated correctly. Rather than testing the internals of the state machine we are testing that the component is expressing the behaviour we expect.
 
 ```typescript
 expect(queryByTitle(container, "The glass is about a quarter full")).toBeTruthy();
 ```
-### Automation
+
+### Common paths
+
+Quite quickly paths become common. With the glass component getting to the point where the glass is full and then testing from there. 
+
+```typescript
+function fillTheGlass(container) {
+  transistion.empty.FILL(container);
+  transistion.filling.FILL(container);
+  transistion.filling.FILL(container);
+  transistion.filling.FILL(container);
+}
+```
+
+Having something like this in place makes refactoring easier as it reduces duplication, keeps consistency between tests as the same path is travelled and helps keep you working on the outside of the component and not trying to rig it into a state for testing.
+
+I also find it is a good tool for finding and deleting duplicate tests, a way of highlighting over testing.
 
 ### These are disconnected?
 
+One thing I realised while working this way is that we are in fact creating a light mirrored version of the state chart in the transitions look up. In fact although XState powers the component, a component does not require a state chart for it to be tested this way. 
+
+A model 
+
+### Automation
 
 ### Conclusion
