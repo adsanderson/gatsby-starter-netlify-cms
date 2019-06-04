@@ -80,13 +80,27 @@ We can't move **empty** to **full**, or from **full** to **filling**
 
 Walking the graph is the process of moving from vertex to vertex via an edge, or from state to state via events. We want to validate that the component being tested has correctly implemented the behaviour we have defined in our state chart. 
 
-### How to walk
+The graph tells us what events are required. We can then look up a state and event; and interact with the component based on this lookup. This is where a library like [Testing library](https://testing-library.com) comes in extremely useful for interactions.
 
+An example of the **empty** to **filling** transition for the Glass component could look like this:
 
+```typescript
+const transistion = {
+  empty: {
+    FILL: container => {
+      fireEvent.click(getByText(container, "Fill"));
+    }
+  }
+}
+```
 
+Whenever we transition from **empty** to **filling** via a **FILL** event. The component should find the button that says "Fill" and click it.
 
-This is where [Testing library](https://testing-library.com) as it gives us a wa
+The next step is then to validate that the state (and/or context) is correct. Again using Testing library we can check that the component has updated correctly.
 
+```typescript
+expect(queryByTitle(container, "The glass is about a quarter full")).toBeTruthy();
+```
 ### Automation
 
 ### These are disconnected?
