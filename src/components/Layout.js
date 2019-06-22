@@ -10,7 +10,11 @@ import "../../node_modules/prismjs/themes/prism-tomorrow.css";
 
 const TemplateWrapper = ({ children }) => (
   <div>
-    <Helmet title="Home | Devtings" />
+    <Helmet 
+      title="Home | Devtings"
+      htmlAttributes={{
+        lang: "en-GB"
+      }}/>
     {children}
     <Nav />
   </div>
