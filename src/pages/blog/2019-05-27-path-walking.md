@@ -129,16 +129,18 @@ function fillTheGlass(container) {
 }
 ```
 
-Having something like this in place makes refactoring easier as it reduces duplication, keeps consistency between tests as the same path is travelled and helps keep you working on the outside of the component and not trying to rig it into a state for testing.
+Having something like this in place makes refactoring easier as it reduces duplication, keeps consistency between tests as the same path is travelled and helps keep you working on the outside of the component and keeping you away from the implementation details.
 
-I also find it is a good tool for finding and deleting duplicate tests, a way of highlighting over testing.
+I also find it is a good tool for finding and deleting redundant tests, a way of highlighting over testing. Where a path has been walked multiple times that could show potentially redundant tests, the important part is making sure that the each step is correctly validated.
 
 ### These are disconnected?
 
-One thing I realised while working this way is that we are in fact creating a light mirrored version of the state chart in the transitions look up. In fact although XState powers the component, a component does not require a state chart for it to be tested this way. 
+One thing I realised while working this way is that we are in fact creating a light  version of the state chart in the transitions look up. In fact although XState powers the component, a component does not require a state chart for it to be tested this way. 
 
-A model 
+
 
 ### Automation
+
+Graph walking is at the heart of automated model-based testing. By using graph walking algorithms you can generate tests automatically based on the  
 
 ### Conclusion
