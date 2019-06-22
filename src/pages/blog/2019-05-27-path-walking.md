@@ -8,6 +8,10 @@ tags:
 ---
 ### Intro
 
+It is possible to model a component to view a directed graph of it's states and the events to transition those states. Giving us a separate explanation of the behaviour of the component to the implementation of it.
+
+This post is about how we can use that graph to test that the implementation of a component matches the desired behaviour.
+
 ### A state chart
 
 A UI (or more likely part of a UI) can be represented by a state chart. We can start with a simple a slightly modified version of the [Glass state chart example](https://xstate.js.org/docs/guides/context.html#context) from the XState docs. 
@@ -63,7 +67,7 @@ We have three states (empty, filling, full), two events to transition between fi
 
 ### Graph
 
-It is possible to represent a state chart as a graph. Each state being a vertex and each transition being an edge. A very simple graph that can be generated from the Glass state chart would look like this:
+It is possible to represent a state chart as a directed graph. Each state being a vertex and each transition being an edge. A very simple graph that can be generated from the Glass state chart would look like this:
 
 ![Graph representation of Glass state chart](https://res.cloudinary.com/lazydayed/image/upload/v1559319236/glass-machine-graph_i44noe.png) 
 
