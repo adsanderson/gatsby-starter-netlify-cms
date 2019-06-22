@@ -135,9 +135,9 @@ I also find it is a good tool for finding and deleting redundant tests, a way of
 
 ### These are disconnected?
 
-One thing I realised while working this way is that we are in fact creating a light  version of the state chart in the transitions look up. In fact although XState powers the component, a component does not require a state chart for it to be tested this way. 
+One thing I realised while working this way is that we are in fact creating a light  version of the state chart in the transitions look up. In fact although XState powers the component, a component does not require it to be powered by a state chart for it to be tested this way. 
 
-
+The combination of a component and test both sharing the same underlying logic is very powerful. It does enable any component to be modelled and tested this way.
 
 ### Automation
 
