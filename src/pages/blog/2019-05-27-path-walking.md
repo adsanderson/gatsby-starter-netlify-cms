@@ -6,8 +6,6 @@ description: 'or: How I learned to walk a graph'
 tags:
   - testing
 ---
-### Intro
-
 It is possible to model a component as a directed graph, showing the components states and the events to transition those states. Giving us a separate explanation of the behaviour of the component to the implementation of it.
 
 This post is about how we can use that graph to test that an implementation of a component matches the desired behaviour, by walking the graph.
@@ -18,7 +16,7 @@ Look at the the graph for a component.
 
 How to walk the graph using (Testing Library)[https://testing-library.com]
 
-Finally look at what this could mean.
+Finally explore some of the ideas and potential that's been covered.
 
 ### A state chart
 
@@ -141,14 +139,20 @@ Having something like this in place makes refactoring easier as it reduces dupli
 
 I also find it is a good tool for finding and deleting redundant tests, a way of highlighting over testing. Where a path has been walked multiple times that could show potentially redundant tests, the important part is making sure that the each step is correctly validated.
 
+### In action
+
+Below is an example code sandbox to see what I have written in action.
+
+<iframe src="https://codesandbox.io/embed/graphwalkingtesting-ny8l6?fontsize=14" title="graph-walking-testing" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
 ### These are disconnected?
 
-One thing I realised while working this way is that we are in fact creating a light  version of the state chart in the transitions look up. In fact although XState powers the component, a component does not require it to be powered by a state chart for it to be tested this way. 
+One thing I realised while working this way is that we are in fact creating a pseudo-state chart in the transitions look up. In fact although XState powers the component, a component does not require it to be powered by a state chart for it to be tested this way. 
 
-The combination of a component and test both sharing the same underlying logic is very powerful. It does enable any component to be modelled and tested this way.
+The combination of a component and test both sharing the same underlying logic is very powerful. 
+
+This does open the door to allowing existing code and components to be tested this way, by modelling. 
 
 ### Automation
 
 Graph walking is at the heart of automated model-based testing. By using graph walking algorithms you can generate tests automatically based on the  
-
-### Conclusion
