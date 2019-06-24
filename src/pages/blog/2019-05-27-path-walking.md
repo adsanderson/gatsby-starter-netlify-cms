@@ -8,9 +8,17 @@ tags:
 ---
 ### Intro
 
-It is possible to model a component to view a directed graph of it's states and the events to transition those states. Giving us a separate explanation of the behaviour of the component to the implementation of it.
+It is possible to model a component as a directed graph, showing the components states and the events to transition those states. Giving us a separate explanation of the behaviour of the component to the implementation of it.
 
-This post is about how we can use that graph to test that the implementation of a component matches the desired behaviour.
+This post is about how we can use that graph to test that an implementation of a component matches the desired behaviour, by walking the graph.
+
+We will look at how to use [XState](https://xstate.js.org/docs/) and state charts to derive a directed graph.
+
+Look at the the graph for a component.
+
+How to walk the graph using (Testing Library)[https://testing-library.com]
+
+Finally look at what this could mean.
 
 ### A state chart
 
