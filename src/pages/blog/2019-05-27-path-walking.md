@@ -156,3 +156,7 @@ This does open the door to allowing existing code and components to be tested th
 ### Automation
 
 Graph walking is at the heart of automated model-based testing. By using graph walking algorithms you can generate tests automatically based on the  
+
+### Wrap
+
+Techniques like this help to move away from the how your application works to what it does. The goal is to make sure our application does what we want it to do.
