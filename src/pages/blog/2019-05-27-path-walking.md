@@ -151,12 +151,12 @@ One thing I realised while working this way is that we are in fact creating a ps
 
 The combination of a component and test both sharing the same underlying logic is very powerful. 
 
-This does open the door to allowing existing code and components to be tested this way, by modelling. 
+This does open the door to allowing existing code and components to be tested this way. By modelling the desired behaviour and then basing the tests on that. 
 
 ### Automation
 
-Graph walking is at the heart of automated model-based testing. By using graph walking algorithms you can generate tests automatically based on the  
+Graph walking is at the heart of automated model-based testing. By using graph walking algorithms you can generate tests automatically based on the results. 
 
-### Wrap
+### Conclusion
 
 Techniques like this help to move away from the how your application works to what it does. The goal is to make sure our application does what we want it to do.
