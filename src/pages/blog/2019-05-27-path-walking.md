@@ -157,7 +157,7 @@ This does open the door to allowing existing code and components to be tested th
 
 Graph walking is at the heart of automated model-based testing. By using graph walking algorithms you can generate tests automatically based on the results. 
 
-<!-- think about level of detail -->
+<!-- Combine with disconnect, further exploration -->
 
 ### Conclusion
 
