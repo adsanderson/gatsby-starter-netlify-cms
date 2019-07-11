@@ -14,7 +14,7 @@ We will look at how to use [XState](https://xstate.js.org/docs/) and state chart
 
 Look at the the graph for a component.
 
-How to walk the graph using (Testing Library)[https://testing-library.com]
+How to walk the graph using (Testing Library)\[https://testing-library.com]
 
 Finally explore some of the ideas and potential that's been covered.
 
@@ -75,14 +75,15 @@ We have three states (empty, filling, full), two events to transition between fi
 
 It is possible to represent a state chart as a directed graph. Each state being a vertex and each transition being an edge. A very simple graph that can be generated from the Glass state chart would look like this:
 
-![Graph representation of Glass state chart](https://res.cloudinary.com/lazydayed/image/upload/v1559319236/glass-machine-graph_i44noe.png) 
+![Graph representation of Glass state chart](https://res.cloudinary.com/lazydayed/image/upload/v1559319236/glass-machine-graph_i44noe.png)
 
 We can move: 
-- from **empty** to **filling**
-- from **filling** to **filling**
-- from **filling** to **full**
-- from **filling** to **empty**
-- from **full** to **empty**
+
+* from **empty** to **filling**
+* from **filling** to **filling**
+* from **filling** to **full**
+* from **filling** to **empty**
+* from **full** to **empty**
 
 We can't move **empty** to **full**, or from **full** to **filling**
 
@@ -145,20 +146,12 @@ Below is an example code sandbox to see what I have written in action.
 
 <iframe src="https://codesandbox.io/embed/graphwalkingtesting-ny8l6?fontsize=14" title="graph-walking-testing" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-### These are disconnected?
+### Observations
 
-One thing I realised while working this way is that we are in fact creating a pseudo-state chart in the transitions look up. In fact although XState powers the component, a component does not require it to be powered by a state chart for it to be tested this way. 
+One of the things I realised while working this way is that we are in fact creating a pseudo-state chart in the transitions look up. In fact although XState powers the component, a component does not require it to be powered by a state chart for it to be tested this way. The combination of a component and test both sharing the same underlying logic is very powerful. This does open the door to allowing existing code and components to be tested this way. By modelling the desired behaviour and then basing the tests on that. 
 
-The combination of a component and test both sharing the same underlying logic is very powerful. 
-
-This does open the door to allowing existing code and components to be tested this way. By modelling the desired behaviour and then basing the tests on that. 
-
-### Automation
+These test feel a lot like the behaviour style tests from Cucumber. Where rather than mapping "natural" language to ways of interacting and validating a system under test; The statechart and visualisation is used to map the interactions to the behaviour.
 
 Graph walking is at the heart of automated model-based testing. By using graph walking algorithms you can generate tests automatically based on the results. 
-
-<!-- Combine with disconnect, further exploration -->
-
-### Conclusion
 
 Techniques like this help to move away from the how your application works to what it does. The goal is to make sure our application does what we want it to do.
