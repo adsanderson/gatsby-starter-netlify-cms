@@ -11,3 +11,5 @@ const env = {
 console.log('ENV', env);
 
 fs.writeFileSync('./src/cms/env.json', JSON.stringify(env));
+
+console.log('pre-build end');
