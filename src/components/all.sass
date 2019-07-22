@@ -3,6 +3,9 @@ $font-size: 18px
 $line-height: 1.48em
 $line-width: $font-size * 1.48 * 27.8
 
+$break-small: 320px;
+$break-large: 1200px;
+
 $body: #F5F5F5
 $color: #233237
 $link: #0F1626
@@ -15,7 +18,11 @@ body
   margin: 0
   background: $body //linear-gradient(#CA6A2D, #783316)
   min-height: 100vh
-  padding: 0 2rem 2rem 2rem
+  padding: 0 1rem 2rem 1rem
+
+@media screen and (min-width: $break-large) 
+  body
+    padding: 0 2rem 2rem 2rem
 
 .header
   padding: 8rem 0 8rem 0
@@ -76,6 +83,8 @@ body
     &:hover
       color: $highlight
       text-decoration: underline
+  img
+    max-width: calc(100vw - 2rem)
 
 .blog-post ~ .nav
   margin: 8rem auto 0 auto
